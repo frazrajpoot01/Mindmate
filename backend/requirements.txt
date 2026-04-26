@@ -16,3 +16,4 @@ SpeechRecognition
 textblob
 nltk
 requests
+email-validator
