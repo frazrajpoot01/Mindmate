@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #09090b;
+  /* zinc-950 */
+  --brand: #fafafa;
+  /* zinc-50 */
+  --brand-muted: #a1a1aa;
+  /* zinc-400 */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: #fafafa;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+/* ─── Premium Minimal Scrollbar ─── */
+@layer base {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #27272a transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #27272a;
+    /* zinc-800 */
+    border-radius: 10px;
+    border: 2px solid #09090b;
+    /* Creates a floating pill effect */
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: #3f3f46;
+    /* zinc-700 */
+  }
+}
+
+/* ─── Global Utility Classes ─── */
+@layer utilities {
+
+  /* Subtle Silver Text Gradient */
+  .text-gradient {
+    background: linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Refined Glass (Subtle border, dark background) */
+  .glass {
+    background: rgba(24, 24, 27, 0.7);
+    /* zinc-900 */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .glass-hover {
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+
+  .glass-hover:hover {
+    background: rgba(39, 39, 42, 0.8);
+    /* zinc-800 */
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Updated Minimal Inputs */
+  .input-field {
+    background: #18181b;
+    /* zinc-900 */
+    border: 1px solid #27272a;
+    /* zinc-800 */
+    color: #fafafa;
+    border-radius: 8px;
+    padding: 12px 16px;
+    width: 100%;
+    font-size: 0.875rem;
+    /* text-sm */
+    outline: none;
+    transition: border-color 0.2s, background-color 0.2s;
+  }
+
+  .input-field::placeholder {
+    color: #52525b;
+    /* zinc-500 */
+  }
+
+  .input-field:focus {
+    border-color: #71717a;
+    /* zinc-500 */
+    background: transparent;
+  }
+
+  /* High-Contrast Action Buttons */
+  .btn-primary {
+    background: #fafafa;
+    /* zinc-50 */
+    color: #09090b;
+    /* zinc-950 */
+    border-radius: 8px;
+    padding: 12px 28px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    /* text-sm */
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+  }
+
+  .btn-primary:hover {
+    background: #e4e4e7;
+    /* zinc-200 */
+  }
+
+  .btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  /* Subtle Outline Buttons */
+  .btn-outline {
+    background: transparent;
+    color: #fafafa;
+    border-radius: 8px;
+    padding: 12px 28px;
+    font-weight: 500;
+    font-size: 0.875rem;
+    border: 1px solid #27272a;
+    /* zinc-800 */
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+  }
+
+  .btn-outline:hover {
+    background: #18181b;
+    /* zinc-900 */
+    border-color: #3f3f46;
+    /* zinc-700 */
+    color: #fafafa;
+  }
+}
+
+/* Neutral Orbs (No more purple glow) */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.15;
+  pointer-events: none;
+  background: #3f3f46;
+  /* zinc-700 */
+}
+
+/* Typing indicator dots */
+@keyframes bounce-dot {
+
+  0%,
+  80%,
+  100% {
+    transform: scale(0.6);
+    opacity: 0.4;
+  }
+
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.typing-dot:nth-child(1) {
+  animation: bounce-dot 1.2s infinite ease-in-out 0s;
+}
+
+.typing-dot:nth-child(2) {
+  animation: bounce-dot 1.2s infinite ease-in-out 0.2s;
+}
+
+.typing-dot:nth-child(3) {
+  animation: bounce-dot 1.2s infinite ease-in-out 0.4s;
+}
