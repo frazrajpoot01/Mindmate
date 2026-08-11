@@ -85,6 +85,10 @@ def create_tables():
 # ---------------------------------------------------------------------------
 # Health check
 # ---------------------------------------------------------------------------
+@app.get("/", tags=["Health"])
+def root_check():
+    return "Backend is running"
+
 @app.get("/health", tags=["Health"])
 def health_check():
     return {"status": "ok", "service": "MindMate API"}
