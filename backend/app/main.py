@@ -85,8 +85,8 @@ def create_tables():
 # ---------------------------------------------------------------------------
 # Health check
 # ---------------------------------------------------------------------------
-@app.get("/", tags=["Health"])
-def root_check():
+@app.api_route("/", methods=["GET", "HEAD"], tags=["Health"])
+def root():
     return "Backend is running"
 
 @app.get("/health", tags=["Health"])
