@@ -53,99 +53,88 @@ export default function LandingPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-zinc-950 font-sans antialiased selection:bg-zinc-800 selection:text-zinc-50 overflow-x-hidden">
+    <div className="min-h-screen bg-canvas font-sans antialiased selection:bg-primary/20 selection:text-ink overflow-x-hidden">
       <Navbar />
 
-      {/* ─── Hero ─────────────────────────────────────────────── */}
       <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 pt-24 pb-32">
-
-        {/* Subtle Grid Background */}
         <div className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center overflow-hidden">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-zinc-800 rounded-full blur-[120px] opacity-20" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e6dfd8_1px,transparent_1px),linear-gradient(to_bottom,#e6dfd8_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-60" />
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto space-y-10">
-          {/* Badge */}
           <motion.div
             custom={0}
             initial="hidden"
             animate="visible"
             variants={fadeUp}
-            className="inline-flex items-center gap-2 bg-zinc-900 border border-zinc-800 rounded-full px-4 py-1.5 text-xs font-medium text-zinc-300"
+            className="inline-flex items-center gap-2 bg-surface-card border border-hairline rounded-full px-4 py-1.5 text-xs font-medium text-muted font-sans"
           >
-            <Sparkles size={14} className="text-zinc-400" />
+            <Sparkles size={14} className="text-primary" />
             <span>AI-powered emotional support, available 24/7</span>
           </motion.div>
 
-          {/* Headline */}
           <motion.h1
             custom={1}
             initial="hidden"
             animate="visible"
             variants={fadeUp}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-zinc-50 leading-[1.05]"
+            className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tighter text-ink leading-[1.05] font-serif"
           >
             Your Mind,{' '}
-            <span className="text-zinc-500">Understood.</span>
+            <span className="text-muted-soft">Understood.</span>
           </motion.h1>
 
-          {/* Subheadline */}
           <motion.p
             custom={2}
             initial="hidden"
             animate="visible"
             variants={fadeUp}
-            className="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed"
+            className="text-lg md:text-xl text-muted max-w-2xl mx-auto leading-relaxed font-sans"
           >
             A safe, AI-powered space to vent, reflect, and track your emotional
             well-being 24/7. No judgment. No waiting rooms. Just understanding.
           </motion.p>
 
-          {/* CTAs (Dynamic based on Auth) */}
           <motion.div
             custom={3}
             initial="hidden"
             animate="visible"
             variants={fadeUp}
-            className="flex flex-col sm:flex-row gap-4 justify-center pt-4"
+            className="flex flex-col sm:flex-row gap-4 justify-center pt-4 font-sans"
           >
             {!mounted ? (
-              // Invisible placeholders to prevent layout shift while checking auth
               <div className="flex flex-col sm:flex-row gap-4 justify-center w-full">
                 <div className="h-12 w-full sm:w-40" />
                 <div className="h-12 w-full sm:w-48" />
               </div>
             ) : isLoggedIn ? (
-              // ─── LOGGED IN STATE ───
               <>
                 <Link
                   href="/chat"
-                  className="h-12 px-8 flex items-center justify-center gap-2 bg-zinc-50 text-zinc-950 rounded-lg text-sm font-semibold transition-all hover:bg-zinc-200"
+                  className="h-12 px-8 flex items-center justify-center gap-2 bg-primary text-on-primary rounded-lg text-sm font-semibold transition-all hover:bg-primary-active shadow-sm"
                 >
                   Continue to Chat
                   <ArrowRight size={16} />
                 </Link>
                 <Link
                   href="/dashboard"
-                  className="h-12 px-8 flex items-center justify-center gap-2 bg-transparent border border-zinc-800 text-zinc-300 rounded-lg text-sm font-medium transition-all hover:bg-zinc-900 hover:text-zinc-50"
+                  className="h-12 px-8 flex items-center justify-center gap-2 bg-transparent border border-hairline text-ink rounded-lg text-sm font-medium transition-all hover:bg-surface-soft"
                 >
                   View Dashboard
                 </Link>
               </>
             ) : (
-              // ─── LOGGED OUT STATE ───
               <>
                 <Link
                   href="/signup"
-                  className="h-12 px-8 flex items-center justify-center gap-2 bg-zinc-50 text-zinc-950 rounded-lg text-sm font-semibold transition-all hover:bg-zinc-200"
+                  className="h-12 px-8 flex items-center justify-center gap-2 bg-primary text-on-primary rounded-lg text-sm font-semibold transition-all hover:bg-primary-active shadow-sm"
                 >
                   Start for free
                   <ArrowRight size={16} />
                 </Link>
                 <Link
                   href="/login"
-                  className="h-12 px-8 flex items-center justify-center gap-2 bg-transparent border border-zinc-800 text-zinc-300 rounded-lg text-sm font-medium transition-all hover:bg-zinc-900 hover:text-zinc-50"
+                  className="h-12 px-8 flex items-center justify-center gap-2 bg-transparent border border-hairline text-ink rounded-lg text-sm font-medium transition-all hover:bg-surface-soft"
                 >
                   Sign in to your space
                 </Link>
@@ -153,21 +142,19 @@ export default function LandingPage() {
             )}
           </motion.div>
 
-          {/* Trust note */}
           <motion.p
             custom={4}
             initial="hidden"
             animate="visible"
             variants={fadeUp}
-            className="text-zinc-600 text-sm font-medium tracking-wide"
+            className="text-muted-soft text-sm font-medium tracking-wide font-sans"
           >
             Free to start · No credit card · Crisis-safe
           </motion.p>
         </div>
       </section>
 
-      {/* ─── Features Bento ───────────────────────────────────── */}
-      <section className="max-w-7xl mx-auto px-6 py-32 border-t border-zinc-900">
+      <section className="max-w-7xl mx-auto px-6 py-32 border-t border-hairline">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -175,16 +162,16 @@ export default function LandingPage() {
           variants={fadeUp}
           className="text-center mb-20 space-y-4"
         >
-          <p className="text-zinc-500 font-semibold text-xs uppercase tracking-widest">The Platform</p>
-          <h2 className="text-3xl md:text-5xl font-bold text-zinc-50 tracking-tighter">
+          <p className="text-primary font-semibold text-xs uppercase tracking-widest font-sans">The Platform</p>
+          <h2 className="text-3xl md:text-5xl font-medium text-ink tracking-tighter font-serif">
             Everything you need to feel better
           </h2>
-          <p className="text-zinc-400 max-w-xl mx-auto leading-relaxed text-lg">
+          <p className="text-muted max-w-xl mx-auto leading-relaxed text-lg font-sans">
             Built with care. Designed for real humans. Powered by cutting-edge AI.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 font-sans">
           {features.map((feature, i) => {
             const Icon = feature.icon;
             return (
@@ -195,14 +182,14 @@ export default function LandingPage() {
                 whileInView="visible"
                 viewport={{ once: true, margin: '-40px' }}
                 variants={fadeUp}
-                className={`bg-zinc-900 border border-zinc-800 rounded-2xl p-10 space-y-6 transition-all hover:border-zinc-700 ${feature.size}`}
+                className={`bg-surface-card border border-hairline rounded-2xl p-10 space-y-6 transition-all shadow-sm hover:shadow hover:border-hairline-soft ${feature.size}`}
               >
-                <div className="w-12 h-12 rounded-lg bg-zinc-800/50 border border-zinc-700/50 flex items-center justify-center text-zinc-300">
+                <div className="w-12 h-12 rounded-lg bg-canvas border border-hairline flex items-center justify-center text-primary">
                   <Icon size={20} strokeWidth={2} />
                 </div>
                 <div className="space-y-3">
-                  <h3 className="text-zinc-50 font-semibold text-xl tracking-tight">{feature.title}</h3>
-                  <p className="text-zinc-400 text-sm leading-relaxed">{feature.description}</p>
+                  <h3 className="text-ink font-semibold text-xl tracking-tight">{feature.title}</h3>
+                  <p className="text-body text-sm leading-relaxed">{feature.description}</p>
                 </div>
               </motion.div>
             );
@@ -210,47 +197,43 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ─── CTA Banner ───────────────────────────────────────── */}
       <section className="max-w-7xl mx-auto px-6 pb-32">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeUp}
-          className="relative rounded-3xl overflow-hidden bg-zinc-900 border border-zinc-800"
+          className="relative rounded-3xl overflow-hidden bg-surface-card border border-hairline shadow-sm"
         >
-          {/* Subtle background element inside CTA */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-zinc-800/40 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent" />
 
           <div className="relative z-10 py-24 px-8 md:px-16 text-center flex flex-col items-center space-y-8">
-            <h2 className="text-4xl md:text-5xl font-bold text-zinc-50 tracking-tighter max-w-2xl">
+            <h2 className="text-4xl md:text-5xl font-medium text-ink tracking-tighter max-w-2xl font-serif">
               Your journey to emotional clarity starts today.
             </h2>
-            <p className="text-zinc-400 max-w-lg mx-auto leading-relaxed text-lg">
+            <p className="text-muted max-w-lg mx-auto leading-relaxed text-lg font-sans">
               Join thousands of people who use MindMate to understand themselves better. Free, private, and always here.
             </p>
 
-            {/* Dynamic Bottom CTA */}
-            <div className="h-12 flex items-center justify-center">
+            <div className="h-12 flex items-center justify-center font-sans">
               {!mounted ? (
-                <div className="h-12 w-48" /> // Placeholder
+                <div className="h-12 w-48" />
               ) : isLoggedIn ? (
                 <Link
                   href="/chat"
-                  className="h-12 px-8 flex items-center justify-center gap-2 bg-zinc-50 text-zinc-950 rounded-lg text-sm font-semibold transition-all hover:bg-zinc-200"
+                  className="h-12 px-8 flex items-center justify-center gap-2 bg-primary text-on-primary rounded-lg text-sm font-semibold transition-all hover:bg-primary-active shadow-sm"
                 >
                   Return to Chat <ArrowRight size={16} />
                 </Link>
               ) : (
                 <Link
                   href="/signup"
-                  className="h-12 px-8 flex items-center justify-center gap-2 bg-zinc-50 text-zinc-950 rounded-lg text-sm font-semibold transition-all hover:bg-zinc-200"
+                  className="h-12 px-8 flex items-center justify-center gap-2 bg-primary text-on-primary rounded-lg text-sm font-semibold transition-all hover:bg-primary-active shadow-sm"
                 >
                   Begin your journey <ArrowRight size={16} />
                 </Link>
               )}
             </div>
-
           </div>
         </motion.div>
       </section>

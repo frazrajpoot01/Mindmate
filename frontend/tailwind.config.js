@@ -1,6 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: 'class',
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,46 +8,58 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-      },
       colors: {
-        brand: {
-          50:  '#f5f3ff',
-          100: '#ede9fe',
-          200: '#ddd6fe',
-          300: '#c4b5fd',
-          400: '#a78bfa',
-          500: '#8b5cf6',
-          600: '#7c3aed',
-          700: '#6d28d9',
-          800: '#5b21b6',
-          900: '#4c1d95',
+        primary: {
+          DEFAULT: "#cc785c",
+          active: "#a9583e",
+          disabled: "#e6dfd8",
         },
+        ink: "#141413",
+        body: {
+          DEFAULT: "#3d3d3a",
+          strong: "#252523",
+        },
+        muted: {
+          DEFAULT: "#6c6a64",
+          soft: "#8e8b82",
+        },
+        hairline: {
+          DEFAULT: "#e6dfd8",
+          soft: "#ebe6df",
+        },
+        canvas: "#faf9f5",
         surface: {
-          DEFAULT: 'rgba(255,255,255,0.05)',
-          hover: 'rgba(255,255,255,0.08)',
+          soft: "#f5f0e8",
+          card: "#efe9de",
+          "cream-strong": "#e8e0d2",
+          dark: "#181715",
+          "dark-elevated": "#252320",
         },
-        bg: '#0B0F19',
+        "on-primary": "#ffffff",
+        "on-dark": {
+          DEFAULT: "#faf9f5",
+          soft: "#a09d96",
+        },
+        mood: {
+          positive: "#10b981",
+          neutral: "#3b82f6",
+          negative: "#f43f5e",
+        }
       },
-      backgroundImage: {
-        'gradient-brand': 'linear-gradient(135deg, #7C3AED 0%, #A78BFA 100%)',
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+      fontFamily: {
+        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-cormorant)', 'serif'],
+      },
+      spacing: {
+        section: '96px',
       },
       animation: {
         'bounce-dot': 'bounceDot 1.2s infinite ease-in-out',
-        'pulse-slow': 'pulse 3s infinite',
-        'orb-float': 'orbFloat 8s ease-in-out infinite',
       },
       keyframes: {
         bounceDot: {
-          '0%, 80%, 100%': { transform: 'scale(0)', opacity: '0.3' },
+          '0%, 80%, 100%': { transform: 'scale(0.6)', opacity: '0.4' },
           '40%': { transform: 'scale(1)', opacity: '1' },
-        },
-        orbFloat: {
-          '0%, 100%': { transform: 'translate(0, 0) scale(1)' },
-          '33%': { transform: 'translate(20px, -20px) scale(1.05)' },
-          '66%': { transform: 'translate(-10px, 10px) scale(0.95)' },
         },
       },
     },

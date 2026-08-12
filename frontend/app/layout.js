@@ -1,9 +1,16 @@
-import { Inter } from "next/font/google";
+import { Inter, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
+});
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ['400', '500', '600'],
+  variable: "--font-cormorant",
   display: "swap",
 });
 
@@ -21,12 +28,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#0B0F19" />
+        <meta name="theme-color" content="#faf9f5" />
       </head>
-      <body className={`${inter.variable} font-sans antialiased bg-[#0B0F19] text-slate-200`}>
+      <body className={`${inter.variable} ${cormorant.variable} font-sans antialiased bg-canvas text-ink`}>
         {children}
       </body>
     </html>
