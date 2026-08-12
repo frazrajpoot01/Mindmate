@@ -10,20 +10,36 @@ export default function MobileBottomNav() {
   const [isKeyboardOpen, setIsKeyboardOpen] = useState(false);
 
   useEffect(() => {
-    const handleFocusIn = (e) => {
-      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+    let maxHeight = window.innerHeight;
+
+    const handleResize = () => {
+      const currentHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+      
+      if (currentHeight > maxHeight) {
+        maxHeight = currentHeight;
+      }
+      
+      // If height drops significantly (> 150px), keyboard is likely open
+      if (currentHeight < maxHeight - 150) {
         setIsKeyboardOpen(true);
+        document.body.classList.add('keyboard-open');
+      } else {
+        setIsKeyboardOpen(false);
+        document.body.classList.remove('keyboard-open');
       }
     };
-    const handleFocusOut = () => {
-      setIsKeyboardOpen(false);
-    };
 
-    window.addEventListener('focusin', handleFocusIn);
-    window.addEventListener('focusout', handleFocusOut);
+    window.addEventListener('resize', handleResize);
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', handleResize);
+    }
+
     return () => {
-      window.removeEventListener('focusin', handleFocusIn);
-      window.removeEventListener('focusout', handleFocusOut);
+      window.removeEventListener('resize', handleResize);
+      if (window.visualViewport) {
+        window.visualViewport.removeEventListener('resize', handleResize);
+      }
+      document.body.classList.remove('keyboard-open');
     };
   }, []);
 
