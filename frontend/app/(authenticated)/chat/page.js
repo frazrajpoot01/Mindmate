@@ -337,7 +337,7 @@ function ChatInterface() {
       </div>
 
       {/* Input Area */}
-      <div className="p-4 md:p-6 shrink-0 bg-canvas font-sans sticky bottom-0 z-40 border-t border-hairline md:border-none pb-safe">
+      <div className="p-4 md:p-6 shrink-0 bg-canvas font-sans border-t border-hairline md:border-none">
         <div className="max-w-3xl mx-auto">
           <div className="flex items-end gap-2 bg-surface-card border border-hairline focus-within:border-primary/50 transition-colors rounded-xl p-2 shadow-sm">
             <textarea
